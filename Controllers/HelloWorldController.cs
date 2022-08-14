@@ -9,17 +9,18 @@ namespace MvcMovie.Controllers
         // 
         // GET: /HelloWorld/
 
-        public string Index()
-        {
-            return "This is my default action...";
+        public IActionResult Index(){
+            return View();
         }
 
         // 
         // GET: /HelloWorld/Welcome/ 
 
-        public string Welcome(string name,int age = 10)
+        public IActionResult Welcome(string name,int numTimes)
         {
-            return HtmlEncoder.Default.Encode($"Hello{name} age is{age}");
+            ViewData["Message"] = "hello" + name;
+            ViewData["times"] = numTimes;
+            return View();
         }
     }
 }   
